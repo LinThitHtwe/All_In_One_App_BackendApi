@@ -1,4 +1,4 @@
-const Reaction = require("../../models/reaction");
+const Reaction = require("../../../models/reaction");
 
 const deleteReaction = async (reactionId) => {
   try {

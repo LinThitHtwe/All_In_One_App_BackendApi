@@ -1,8 +1,8 @@
-const Blog = require("../../models/blog");
+const Blog = require("../../../models/blog");
 
 const deleteBlog = async (blogId) => {
   try {
-    const result = await Blog.find().sort({ createdAt: -1 });
+    const result = await Blog.updateOne({ _id: blogId }, { isDeleted: true });
     return result;
   } catch (error) {
     return error;

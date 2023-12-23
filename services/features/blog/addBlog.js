@@ -1,4 +1,4 @@
-const Blog = require("../../models/blog");
+const Blog = require("../../../models/blog");
 
 const addBlog = async (blogData) => {
   const blog = new Blog(blogData);

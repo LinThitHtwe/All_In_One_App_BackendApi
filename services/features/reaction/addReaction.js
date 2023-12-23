@@ -1,4 +1,4 @@
-const Reaction = require("../../models/reaction");
+const Reaction = require("../../../models/reaction");
 
 const addReaction = async (reactionData) => {
   const reaction = new Reaction(reactionData);

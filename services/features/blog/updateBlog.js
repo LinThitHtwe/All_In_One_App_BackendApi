@@ -1,4 +1,4 @@
-const Blog = require("../../models/blog");
+const Blog = require("../../../models/blog");
 
 const updateBlog = async (blogId, blog) => {
   try {
