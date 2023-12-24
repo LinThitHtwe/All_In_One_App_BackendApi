@@ -5,7 +5,7 @@ const deleteReaction = async (reactionId) => {
     const result = await Reaction.findByIdAndDelete(reactionId);
     return result;
   } catch (error) {
-    return error;
+    return { error: error };
   }
 };
 

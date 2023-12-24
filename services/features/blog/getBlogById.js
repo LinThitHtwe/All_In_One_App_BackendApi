@@ -5,7 +5,7 @@ const getBlogById = async (blogId) => {
     const result = await Blog.findById(blogId);
     return result;
   } catch (error) {
-    return error;
+    return { error: error };
   }
 };
 

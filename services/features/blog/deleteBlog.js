@@ -5,7 +5,7 @@ const deleteBlog = async (blogId) => {
     const result = await Blog.updateOne({ _id: blogId }, { isDeleted: true });
     return result;
   } catch (error) {
-    return error;
+    return { error: error };
   }
 };
 

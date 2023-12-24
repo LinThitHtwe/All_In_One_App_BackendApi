@@ -5,7 +5,7 @@ const updateBlog = async (blogId, blog) => {
     const result = await Blog.findOneAndUpdate(blogId, blog);
     return result;
   } catch (error) {
-    return error;
+    return { error: error };
   }
 };
 

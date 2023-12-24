@@ -5,7 +5,7 @@ const deleteBookmark = async (bookmarkId) => {
     const result = await Bookmark.findByIdAndDelete(bookmarkId);
     return result;
   } catch (error) {
-    return error;
+    return { error: error };
   }
 };
 
