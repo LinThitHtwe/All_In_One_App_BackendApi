@@ -1,12 +1,13 @@
-const Blog = require("./path-to-your-blog-model");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const deleteBlog = async (blogId) => {
-  try {
-    const result = await Blog.updateOne({ _id: blogId }, { isDeleted: true });
-    return result;
-  } catch (error) {
-    return error;
-  }
-};
+const blogSchema = new Schema({
+  title: { type: String },
+  content: { type: String },
+  isDeleted: { type: Boolean, default: false },
+  picture: [{ type: String }],
+  postedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+});
 
-module.exports = deleteBlog;
+const Blog = mongoose.model("Blog", blogSchema);
+module.exports = Blog;
