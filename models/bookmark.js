@@ -6,10 +6,13 @@ let Bookmark;
 try {
   Bookmark = mongoose.model("Bookmark");
 } catch (error) {
-  const bookmarkSchema = new Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    blog: { type: mongoose.Schema.Types.ObjectId, ref: "Blog" },
-  });
+  const bookmarkSchema = new Schema(
+    {
+      user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+      blog: { type: mongoose.Schema.Types.ObjectId, ref: "Blog" },
+    },
+    { timestamps: true }
+  );
 
   Bookmark = mongoose.model("Bookmark", bookmarkSchema);
 }
