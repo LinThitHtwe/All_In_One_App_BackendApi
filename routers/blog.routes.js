@@ -10,7 +10,7 @@ const {
 
 router.get("/all", getAllBlog);
 router.post("/add", addBlog);
-router.get("/detail/:blogId", getAllBlog);
+router.get("/detail/:blogId", getBlogById);
 router.put("/update/:blogId", updateBlog);
 router.patch("/delete/:blogId", deleteBlog);
 
