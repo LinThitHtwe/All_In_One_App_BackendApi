@@ -17,6 +17,6 @@ require("./config/db")();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/v1", router);
-app.listen(process.env.PORT, process.env.IP_ADDRESS, function () {
+app.listen(process.env.PORT, function () {
   console.log("Server listening on", process.env.IP_ADDRESS, process.env.PORT);
 });
