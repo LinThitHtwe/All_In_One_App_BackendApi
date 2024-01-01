@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const messages = require("../messages/messages");
 function authenticateToken(req, res, next) {
-  const token = req.header("Authorization");
+  const token = req.header("Authorization").split(" ")[1];
 
   if (!token) {
     return res.status(401).json({ message: messages.unAuthorized });

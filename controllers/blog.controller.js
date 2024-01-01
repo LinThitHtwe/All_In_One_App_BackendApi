@@ -3,9 +3,10 @@ const getAllBlogService = require("../services/features/blog/getAllBlog");
 const getBlogByIdService = require("../services/features/blog/getBlogById");
 const updateBlogService = require("../services/features/blog/updateBlog");
 const deleteBlogService = require("../services/features/blog/deleteBlog");
+const getLatestBlogService = require("../services/features/blog/getLatestBlog");
 const messages = require("../messages/messages");
 
-const addBlog = async (req, res) => {
+const addBlog = async (req, res, next) => {
   try {
     const blogData = req.body;
     const result = await addBlogService(blogData);
@@ -61,10 +62,20 @@ const deleteBlog = async (req, res) => {
     res.status(500).json({ error: messages.serverError });
   }
 };
+
+const getLatestBlog = async (req, res) => {
+  try {
+    const result = await getLatestBlogService();
+    res.json(result);
+  } catch (err) {
+    res.status(404).json({ error: messages.serverError });
+  }
+};
 module.exports = {
   addBlog,
   getAllBlog,
   getBlogById,
   updateBlog,
   deleteBlog,
+  getLatestBlog,
 };
