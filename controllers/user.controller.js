@@ -1,15 +1,15 @@
 const jwt = require("jsonwebtoken");
 const messages = require("../messages/messages");
 const addUserService = require("../services/features/user/addUser");
-const getUserByEmailService = require("../services/features/user/getUserByEmail");
+const getUserByEmailLoginService = require("../services/features/user/getUserByEmailLogin");
+const getUserByEmailRegisterService = require("../services/features/user/getUserByEmailRegister");
 const bcrypt = require("bcrypt");
-const getUserByEmail = require("../services/features/user/getUserByEmail");
 require("dotenv").config();
 
 const registerUser = async (req, res) => {
   try {
     const userData = req.body;
-    const emailExists = await getUserByEmail(userData.email);
+    const emailExists = await getUserByEmailRegisterService(userData.email);
     if (emailExists) {
       return res.status(400).json({ error: "Email already exists." });
     }
@@ -36,7 +36,7 @@ const registerUser = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await getUserByEmailService(email);
+    const user = await getUserByEmailLoginService(email);
     if (user.error) {
       return res.status(404).json({ message: messages.notFound });
     }

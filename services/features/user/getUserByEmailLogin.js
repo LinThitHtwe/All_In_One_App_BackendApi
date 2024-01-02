@@ -1,10 +1,10 @@
 const User = require("../../../models/user");
 
-const getUserByEmail = async (email) => {
+const getUserByEmailLogin = async (email) => {
   try {
     const result = await User.findOne({ email });
     if (!result) {
-      throw new Error("User not found");
+      throw new Error("User found");
     }
     return result;
   } catch (error) {
@@ -12,4 +12,4 @@ const getUserByEmail = async (email) => {
   }
 };
 
-module.exports = getUserByEmail;
+module.exports = getUserByEmailLogin;

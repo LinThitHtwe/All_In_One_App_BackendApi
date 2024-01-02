@@ -17,9 +17,11 @@ const addBlog = async (req, res, next) => {
 };
 
 const getAllBlog = async (req, res) => {
+  const { page } = req.query;
+  console.log(page);
   try {
-    const result = await getAllBlogService();
-    res.json(result);
+    const result = await getAllBlogService(page * 10);
+    res.json({ data: result, nextPage: Number(page) + 1 });
   } catch (err) {
     res.status(500).json({ error: messages.serverError });
   }

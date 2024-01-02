@@ -7,7 +7,7 @@ const blogSchema = new Schema(
     content: { type: String },
     isDeleted: { type: Boolean, default: false },
     picture: { type: String },
-    postedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }
 );
