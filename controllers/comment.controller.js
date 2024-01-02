@@ -1,4 +1,5 @@
 const addCommentService = require("../services/features/comment/addComment");
+const getCommentByBlogService = require("../services/features/comment/getCommentByBlog");
 const messages = require("../messages/messages");
 
 const addComment = async (req, res) => {
@@ -11,6 +12,18 @@ const addComment = async (req, res) => {
   }
 };
 
+const getCommentByBlog = async (req, res) => {
+  const { blogId } = req.params;
+
+  try {
+    const comments = await getCommentByBlogService(blogId);
+    res.status(200).json({ comments });
+  } catch (error) {
+    res.status(500).json({ error: messages.serverError });
+  }
+};
+
 module.exports = {
   addComment,
+  getCommentByBlog,
 };

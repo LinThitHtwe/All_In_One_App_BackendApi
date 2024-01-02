@@ -1,6 +1,6 @@
 const Blog = require("../../../models/blog");
 
-const getAllBlog = async (startIndex = 1, limit = 10) => {
+const getAllBlog = async (startIndex = 0, limit = 1000) => {
   try {
     const result = await Blog.find()
       .sort({ createdAt: -1 })
